@@ -20,21 +20,25 @@ export default class Server {
   axios(method, url, params){
     return new Promise((resolve, reject) => {
       if(typeof params !== 'object') params = {};
+     /*  if(method=="post"){
+        params = qs.stringify(params)
+      } */
       let _option = params;
       _option = {
         method,
         url,
         baseURL: envconfig.baseURL,
         timeout: 30000,
-        params: null,
+        params: params,
         data: null,
         headers: null,
         withCredentials: true, //是否携带cookies发起请求
         validateStatus:(status)=>{
             return status >= 200 && status < 300;
         },
-        ...params,
+        /* ...params, */
       }
+      console.log(_option);
       axios.request(_option).then(res => {
         resolve(typeof res.data === 'object' ? res.data : JSON.parse(res.data))
       },error => {
