@@ -8,3 +8,5 @@ UI组件用的是anted-mobile
 <br/>
 npm install;<br/>
 npm run start
+<br/>
+用based4和MD5实现登录加密
