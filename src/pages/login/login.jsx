@@ -54,6 +54,9 @@ export default class Login extends Component {
       console.log(userMd5,userBase64);
 
       let reslut = await API.login({"username":userLock,"password":passwordLock});
+      if(reslut.success){
+        this.props.history.push("/home") 
+      }
     }
   }
   getPassword = (v)=>{
